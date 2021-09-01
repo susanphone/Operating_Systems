@@ -31,6 +31,37 @@
 4       4                 --
 5       5                 busy
 
+### What if we have a goto statment?
+* Offsett(displacement) of a line is the factor used to locate that line within the page frame
+* Intuitively, offset represents how far away a line is from the beginning of its page
+
+    pagesize / line # to be located = page #
+                    x x x x 
+                      x x x x <- displacement
+    ex: page size - 500 lines
+        need to access line 1671
+
+        500 / (1671 - 1500 = 171) <-- offset(displacement)
+        = 3 <-- page # 
+
+        1       0
+        500     1   
+        1000    2
+        1500    3
+        2000    4
+## Algorithm to access specific line:
+    see class notes for procedure and example
+
+### Advantage of Paging:
+* Job is stored non-contiguously in memory
+* No external fragmentation
+### Disadvantage of Paging:
+* Overhead
+* Internal fragmentation still exists
+* Page size too small --> PMTs have large size
+* Page size too large --> internal fragmentation increases
+
+
 # Assignment 1
     16 page frames
     page = 4096 bytes
