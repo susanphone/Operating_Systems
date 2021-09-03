@@ -12,7 +12,7 @@
     1. memory is certainly used efficiently
     2. no external fragmentation
     3. almost no internal fragmentation
-* Drawback? \i{Overhead is increased significantly}. An OS nowadays has to be designed by experts and by substantial teamwork
+* Drawback? *Overhead is increased significantly*. An OS nowadays has to be designed by experts and by substantial teamwork
 ### How do we manage paging?
 1. Job Table
     job #       size        PMT location

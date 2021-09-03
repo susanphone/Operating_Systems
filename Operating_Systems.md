@@ -19,8 +19,8 @@
 
     Name some Operation Systems:
         iOS
-        -have coded on: \u{unix}/linux
-        -Android, \u{IBM360}
+        -have coded on: **unix**/linux
+        -Android, **IBM360**
 
 ## What is an Operating system:
     part of computing system managing all the hardware and software
@@ -52,7 +52,7 @@ memory-address.c file
             var 1 2fe3e9dc
             buff  2fe2b150
             var   2fe3eqdc
-        this uses a \u{stack}
+        this uses a **stack**
         
 bytes vs char, char is smaller 4 bytes is 64 char
 what does ```cc memory-address.c``` do? does this compile the program? I think so.

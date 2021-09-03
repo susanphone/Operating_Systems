@@ -65,10 +65,10 @@ In the early days, a computer can only have one computer at a time
 # Relocatable Dynamic Partitions
 * Both of the previous partitions introduce internal/external fragmentations
 * Relocatable dynamic partition is a natural solution
-* The basic idea is \U{garbage collection (memory compaction)} - reuse unused memory blocks
+* The basic idea is **garbage collection (memory compaction)** - reuse unused memory blocks
 ### How to do garbage collection?
-1. \U{Bounds Register} is used to store the highest(or lowest) location in memory accesibly by each program
-2. \U{relocation register} contains the value, which could be positive or negative
+1. **Bounds Register** is used to store the highest(or lowest) location in memory accesibly by each program
+2. **relocation register** contains the value, which could be positive or negative
 * look at machine vs assembly language example file
 
 # The drawback of relocatable dynamic partition
