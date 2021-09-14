@@ -125,6 +125,10 @@ Demand paging allows a user to run jobs with less main memory (this idea of virt
     B: 240k     |A=128k |  128k  | B=256k    | 512k                  |
     C: 64k      |A      |C=64|64k|    B      |  512k                 |
     D: 256k     |A      | C  |64k|    B      | D=256k     | 256k     |
+    Release A
+    Release B   |       | C  |   |    E=256  | D = 256k   |          |
+    E = 200k
+    Release C
     * See class tree example
 
 ## Segmented Memory Allocation
@@ -172,3 +176,5 @@ segment size / memory location <- displacement
     2. Overhead (for paging interrupts) is increased significantly
     3. high cost for preventing thrashing
 * **End of Memory Management**. Before we say that, how does UNIX memory management work?
+
+32-bit windows os memory system (could be a project topic)

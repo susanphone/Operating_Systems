@@ -1,54 +1,92 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-struct Job_Number {
+
+int Page_Size[4069];
+int head;
+int tail;
+
+struct Queue {
+    head;
+    tail; 
+} item;
+
+struct Memory {
     int job;
     int bytes
 } job;
 
-struct Memory_Status {
-    int status;
-    char state;
-    int memory;
-} memory_status;
-
-// malloc to memory and remove from queue
-// remove job
-// have an array of page frames
 
 struct char_buff *repl_read_command(char *prompt) {
-
+    int command[] = scanf(&prompt);
+    for (int i=0; i<len(command); i++) {
+       command[i].split(" ");
+    }
+    int job = command[0];
+    int bytes = command[1];
+    enqueue(job);
+    repl_execute_command(bytes);
 }
 
-// add to queue
-void enqueue();
-//remove from queue
-void dequeue();
+void enqueue(char *prompt){
+    int new_job;
+    int head = 0;
+    scanf("%d %d", &prompt);
+    int tail += 1;
+    Page_Size[tail] = new_job;
+    //add job to queue
+}
+
+//remove from queue if the job is complete
+void dequeue(struct job *memo){
+    int head;
+    head += 1;
+    enqueue(head); //move job to done
+    
+}
 
 void repl_execute_command(struct char_buff *buffer) {
-
+    // take completed jobs out of memory
+    // calculate # of pages required for job
+    // put jobs in memory
 }
 
-void repl_print_memory(struct memory_status *memostat, struct job *jerb) {
-
+void print_memory(struct job *memory, FILE output) {
+    if (head == -1) {
+        printf("Empty Queue");
+    } else {
+        for (int i = head; i <= tail; i++) {
+            fprintf(&output, ("%d \n", &memory));
+        }
+    }
+    
+    // print the memory out in the command like a memory map table or job map table
+}
+void exit(char *prompt){
+    return 0;
 }
 
 
 int main() {
-    // char_buff * command;
     struct job *jerb;
-    struct memory_status *memostat;
     char *prompt;
     struct char_buff *buffer;
+    FILE *output = fopen("output.txt", "w");
+
+    
     // Setting up REPL
     do {
         int *command = repl_read_command(&prompt);
-        repl_execute_command(&buffer);
-        repl_print_memory(&jerb, &memostat);
-    } while (/* items in the queue */); 
-        /* code */
+        if (&prompt == "print") {
+            repl_print_memory(&prompt, output);
+        }
+        if (&prompt == "exit") {
+            return 0;
+        } else {
+            repl_execute_command(&buffer);
+        }
+    } while (enqueue > 0); 
     
-    FILE *output = fopen("output.txt", "w");
 
 
     fprint("hello");
