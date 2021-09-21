@@ -8,7 +8,15 @@
 
 struct char_buff *repl_read_command(char *prompt);
 void repl_execute_command(struct char_buff *buffer);
-void repl_print_memory(struct memory_status *memostat, struct job *jerb);
+int page_calculator(struct item *bytes);
+void enqueue(struct Memory* memory);
+void dequeue(struct Memory* memory);
+struct Memory* job_to_memory(struct Memory* memory);
+int remove_job_from_memory(int page_frames, struct Memory* memory);
+void repl_execute_command(struct char_buff *command);
+void print_memory(struct job *memory, FILE output);
+void exit(char *prompt);
+
 
 
 

@@ -45,7 +45,6 @@ void enqueue(struct Memory* memory){
 
 //remove from queue if the job is complete
 void dequeue(struct Memory* memory){
-    job_to_memory(memory->job_number);
     int head;
     head += 1;    
 }
