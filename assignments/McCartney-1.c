@@ -5,9 +5,6 @@
 
 struct Queue {
     int head, tail, size; 
-    unsigned capacity;
-    int array[];
-
 } queue;
 
 struct Memory {
@@ -36,49 +33,70 @@ int page_calculator(struct item *bytes) {
     int bytess = repl_read_command(bytes);
     int required_pages = (bytess / page_size);
     int final_amount = ceil(required_pages);
-    return final_amount;
-
-    
+    return final_amount;   
 }
-// struct Queue* newQueue(unsigned capacity) {
-//     struct Queue* item = (struct Queue*)malloc(sizeof(struct Queue));
-//     item->capacity = capacity;
-//     item->head = item->page_size = 0;
-
-//     item->tail = capacity - 1;
-//     item->array = (int*)malloc(item->capacity * sizeof(int));
-//     return item;
-// }
     
 //add job to queue
-void enqueue(struct Queue* queue, int job){
+void enqueue(struct Memory* memory){
+    int tail;
+    tail+=1;
     // add job to queue 
 }
 
 //remove from queue if the job is complete
-void dequeue(struct job *memo){
+void dequeue(struct Memory* memory){
+    job_to_memory(memory->job_number);
     int head;
     head += 1;    
 }
 
-int job_to_memory(struct Memory job, int size) {
-
+// divide job into page frames
+struct Memory* job_to_memory(struct Memory* memory) {
+    int needed_frames = page_calculator(memory->bytes);
+    // add job to memory
+    return memory->job_number, memory->bytes;
 }
 
 // remove the job from memory and release pages
-void remove_job_from_memory(int array[], int size, int job_number) {
+int remove_job_from_memory(int page_frames, struct Memory* memory) {
+    int remaining_bytes = memory->bytes;
+    int pages = 0;
+    while (remaining_bytes != 0) {
+        page_frames = 4069;
+        remaining_bytes -= page_frames;
+        pages += 1;
+    }
+    return pages;
 
 }
 
 
-void repl_execute_command(struct char_buff *buffer) { 
-    enqueue();
-    dequeue();
-    add_to_memory();
-    remove_job_from_memory();
-   // take completed jobs out of memory
-    // put jobs in memory
-}
+void repl_execute_command(struct char_buff *command[]) {
+    struct Memory job_number, bytes;
+    int page_frames[16];
+    int *page_frame_pointer = page_frames; 
+    // if prompt add new job, add to queue
+    enqueue(&command[0]);
+    // if enough page frames are available, 
+    //remove from queue and add to memory
+    for (int i = 0; i < page_frames; i++) {
+        if(page_frames == 0) {
+        dequeue(&command[1,2]);
+        job_to_memory(&command[1,2]);
+    } else {
+        //if job is done, remove from queue
+        if(page_frame_pointer != 0) {
+            int reset_frames = remove_job_from_memory(page_frames);
+            page_frame_pointer[reset_frames];
+            dequeue(&command[0]);
+        } else {
+            //put job in the back of the queue and try a new job
+            dequeue(&command);
+            enqueue(&command);
+            continue;
+        }
+    }
+}}
 
 // print the memory out in the command like a memory map table or job map table
 void print_memory(struct job *memory, FILE output) {
@@ -103,26 +121,23 @@ void exit(char *prompt){
 
 int main() {
     char *prompt;
-    int page_frames[16];
-    int *page_frame_pointer = page_frames;
-    struct char_buff *buffer;
+        // struct char_buff *buffer;
     FILE *output = fopen("output.txt", "w");
 
     
     // Setting up REPL
     do {
-        int *command = repl_read_command(&prompt);
+        int *command[] = repl_read_command(&prompt[0,1]);
         if (&prompt == "print") {
             repl_print_memory(&prompt, output);
         }
         if (&prompt == "exit") {
             return 0;
         } else {
-            repl_execute_command(&buffer);
+            repl_execute_command(&command);
         }
     } while (enqueue > 0); 
     
-
 
 
     int fclose(output);
