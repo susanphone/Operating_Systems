@@ -5,7 +5,9 @@
     3. Cost (unit cost)
 * Their relationship
     * Faster Speed (access time) -> Greater Cost
+        
         A->B <-> ~B -> ~A
+        
         smallerCost -> slower speed
     * Greater Capacity -> smaller cost
     * From these two we have: Greater Capacity -> Slower Speed
@@ -22,19 +24,21 @@
         * Not only valid in OS.
             * Basis for compiler optimization, databade management, internet browsing, and 
     * See level of memory example
-        Level 1 memory (M1) : 1000 words, 0.1 us access time
-        Level 2 memory (M2) : 100,000 words, 1 us access time
-        T1 - access time for M1 (e.g. cache, disk cache)
-        t2 - access time for M2 (e.g. main memory)
-        T - access time for the whole system
-        H - Hit ratio, the probability that you can find an item in M1
-                    T = H * T1 + (1 - H)
-                    = H * T1 + T1 + T2 - H * T1 - H * T2
-                    = T1 + T2 - HT2
-                    = T1 + (1-H) + T2
+        
+            Level 1 memory (M1) : 1000 words, 0.1 us access time
+            Level 2 memory (M2) : 100,000 words, 1 us access time
+            T1 - access time for M1 (e.g. cache, disk cache)
+            t2 - access time for M2 (e.g. main memory)
+            T - access time for the whole system
+            H - Hit ratio, the probability that you can find an item in M1
+                        T = H * T1 + (1 - H)
+                        = H * T1 + T1 + T2 - H * T1 - H * T2
+                        = T1 + T2 - HT2
+                        = T1 + (1-H) + T2
     * Cache/Main Memory Stucture example
-        CPU -> Cache            Word Transfer
-        Cache <- Main Memory    Block transfer (-> page)
+            
+            CPU -> Cache            Word Transfer
+            Cache <- Main Memory    Block transfer (-> page)
 ## Cache Memory
 * Motivation
     see class notes
@@ -59,13 +63,13 @@
 * Example *Performance Analysis of Two-Level Memory*
     * We want this ratio to be close to 1
     * T2/T1 -> constant
-* Example *Access Efficiency as a Function of Hit Ratio (r = T2/T1)*
+* Example *Access Efficiency as a Function of Hit Ratio $(r = T2/T1)$*
 
-* The average cost per bit for two level memory, *C_s*
+* The average cost per bit for two level memory, $C_s$
 
-        C1 = C1S1 + C2S2 / S1 + S2
+    $C_1 = C_1S_1 + C_2S_2 / S_1 + S_2$
 
-* To make *C_s* roughly the same as *C_2*. We should make *S1* << S2. (C1>>C2 due to the hardware cost which we can do very little to change it). 
+* To make $C_s$ roughly the same as $C_2$. We should make $S_1 << S_2$. ($C_1>>C_2$ due to the hardware cost which we can do very little to change it). 
     See class notes for equation
     * Example Relationship of avg memory cost to relative ememory size for a 2 level memory
 * Example hti ratio as a fucntion of relative memory size

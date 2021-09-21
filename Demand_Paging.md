@@ -14,32 +14,33 @@ Demand Paging only loads a part of a program into memory for running
 
 Demand paging allows a user to run jobs with less main memory (this idea of virtual memory: the user would feel that the physical memory is almost infinite. though it is not the case in reality)
 * Page Map Table(PMT) need to be modified
-            |Page# |  PageFrame# |  inMemory ? | modified ? | referencedRecently?|
-            | -----| ----------- | ----------- | ---------- | ------------------ |
-    j1:30k  |   0  |    2        |  y          |            |                    |
-            |   1  |    5        |  y          |            |                    |     
-            |   2  |    0        |  y          |            |                    | 
-        
 
-    j2:40k      0       4           y
-                1       1           y
-                2                   n
-                3                   n
+                |Page# |  PageFrame# |  inMemory ? | modified ? | referencedRecently?|
+                | -----| ----------- | ----------- | ---------- | ------------------ |
+        j1:30k  |   0  |    2        |  y          |            |                    |
+                |   1  |    5        |  y          |            |                    |     
+                |   2  |    0        |  y          |            |                    | 
+            
 
-    j3:40k      0       6           y
-                1       2           y
-                2                   n
-                3                   n
+        j2:40k      0       4           y
+                    1       1           y
+                    2                   n
+                    3                   n
 
-    Main Memory:
-        j1,p2   0
-        j2,p1   1
-        j3,p1   2
-        j1,p0   3
-        j2,p0   4
-        j1,p1   5
-        j3,p0   6
-        page size: 10k
+        j3:40k      0       6           y
+                    1       2           y
+                    2                   n
+                    3                   n
+
+        Main Memory:
+            j1,p2   0
+            j2,p1   1
+            j3,p1   2
+            j1,p0   3
+            j2,p0   4
+            j1,p1   5
+            j3,p0   6
+            page size: 10k
 * What if I need to access j2,p2?
 
 ### How does the computer fetch an instruction?
@@ -53,38 +54,39 @@ Demand paging allows a user to run jobs with less main memory (this idea of virt
 * Although demand paging is a solution to ineficient memory utilization, it does solve all the problems
 * **Thrashing** if a large amount of page swapping is performed. the system efficiency is affected
 * **page default** a failure to find a page in memory
-    |memory|
-    |busy  |        while (i < 1,000,000)
-    |pi    |            page i
-    |busy  |         ---------------
-                        page i + 1
+
+        |memory|
+        |busy  |        while (i < 1,000,000)
+        |pi    |            page i
+        |busy  |         ---------------
+                            page i + 1
 
 ## How do we swap a page out of memory?
 ### FIFO (First in first out)
 * FIFO removes the page that has been in the memory the longest
 
-    job request A   B   A   C
-    |frame 1|   A   A   A   C   
-    |frame 2|       B   B   B
-    Secondary:
-        A       B   C   C   A->changed?
-        B       C   D   D   D
-        C       D   E   E   E
-        D       E
-        E
+        job request A   B   A   C
+        |frame 1|   A   A   A   C   
+        |frame 2|       B   B   B
+        Secondary:
+            A       B   C   C   A->changed?
+            B       C   D   D   D
+            C       D   E   E   E
+            D       E
+            E
     
 ### LRU (Least Recently Used). 
 * LRU removes the page that shows the least sign of recent usage.
 
-    job request A   B   A   C
-    |frame 1|   A   A
-    |frame 2|       B
-    secondary:
-        A       B   C
-        B       C   D   
-        C       D   E
-        D       E
-        E
+        job request A   B   A   C
+        |frame 1|   A   A
+        |frame 2|       B
+        secondary:
+            A       B   C
+            B       C   D   
+            C       D   E
+            D       E
+            E
 
 ### LFU (Least Frequently Used)
 * LFU removes the page that shows the least amount of recent usage, over certain period of time.
@@ -92,6 +94,7 @@ Demand paging allows a user to run jobs with less main memory (this idea of virt
 ## How do we make use of the PMT(Page Map Table)?
 * in memory? modified? referenced recently?
     (status)
+
         1       0           0
         1       0           1   not modified but has been referenced
         1       1           0 -> impossible
@@ -103,6 +106,7 @@ Demand paging allows a user to run jobs with less main memory (this idea of virt
 1. Virtual meory is introduced. 
 2. Utilizes memory more efficiently. 
 3. Overhead is heavy
+
         program:    |main|
 
                     |f1: |
@@ -111,7 +115,7 @@ Demand paging allows a user to run jobs with less main memory (this idea of virt
                     |f2: |
 
 ## Why Buddy System?
-* In real systems, a page is usually of size 2^a- a power of 2.
+* In real systems, a page is usually of size $2^a$ - a power of 2.
 * A combination of dynamic partition and paging
 * Allocation algorithm
     see notes
@@ -120,31 +124,35 @@ Demand paging allows a user to run jobs with less main memory (this idea of virt
     see notes
     take free block, find another free block, combine the two. -> Bi + Bj -> Bk
 * Buddy memory written class example
-    Memory                      1M
-    A: 100k     |A=128k |  128k  | 256k      | 512k                  |
-    B: 240k     |A=128k |  128k  | B=256k    | 512k                  |
-    C: 64k      |A      |C=64|64k|    B      |  512k                 |
-    D: 256k     |A      | C  |64k|    B      | D=256k     | 256k     |
-    Release A
-    Release B   |       | C  |   |    E=256  | D = 256k   |          |
-    E = 200k
-    Release C
-    * See class tree example
+    
+        Memory                      1M
+        A: 100k     |A=128k |  128k  | 256k      | 512k                  |
+        B: 240k     |A=128k |  128k  | B=256k    | 512k                  |
+        C: 64k      |A      |C=64|64k|    B      |  512k                 |
+        D: 256k     |A      | C  |64k|    B      | D=256k     | 256k     |
+        Release A
+        Release B   |       | C  |   |    E=256  | D = 256k   |          |
+        E = 200k
+        Release C
+        * See class tree example
 
 ## Segmented Memory Allocation
 * Both of the paging algorithms divid a job into physically equal sized pages, which might cause serious problems in reality
-    Problem: for i =1 to 100000
-                        page i
-    ------|-----|---------
-                        page i + 1
+    
+        Problem: for i =1 to 100000
+                            page i
+        ------|-----|---------
+                            page i + 1
+
 * The idea of segemented meory allocation algorithm is to divide job into logical segments
         segement ----- subroutine
 * Memory is consequently divided into page frames with different sizes -> external fragmentation reappears
 * For each job we associate it with a Segment Map Table(SMT).
+
         | Segemnt# | Size | access right | in memory? | modified? | referenced? |
-Main 20k     0        20k        X               Y                          ---> POINTER
-A    10k     1        10k        X               Y                          ---> FOR THE 
-B    15k     2        15k        X               N                          ---> aDDRESS
+        Main 20k     0        20k        X               Y                          ---> POINTER
+        A    10k     1        10k        X               Y                          ---> FOR THE 
+        B    15k     2        15k        X               N                          ---> aDDRESS
 
 * Similar to paging we need to maintain the following data structures: Job table, segemnt map table, and memory map table
 - 1. Job table lists every job in process

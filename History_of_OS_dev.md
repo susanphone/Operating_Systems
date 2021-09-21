@@ -9,10 +9,12 @@
 * Commercial app
 * CoBol
 * Computer Operator
-    ```$Job(Binhai)```
-    ```$ Password: ______```
-    ```$Language: Fortran ---> load data ```$EoJ```
-    CPU fast, I/O is slow
+      
+        Job(Binhai)
+        Password: ______
+        Language: Fortran ---> load data 
+        EoJ 
+    - CPU fast, I/O is slow
 #### Spooling:Jobs -> tape -> CPU
 
 ## Third Generation 1960s-late 1970s
@@ -26,8 +28,8 @@
 ## Post-third Generation late 1970s-early 1990
 * Virtual memory: the entire program doesn't have to reside in main memory
 * App: DBMS, PC, high-speed network, parallel computing
-    Windows '95, '98(lines: 14M+)
-        See the difference between Unix and Windows '98
+    - Windows '95, '98(lines: 14M+)
+        - See the difference between Unix and Windows '98
 
 ## Modern Generation mid-1990s-now
 * everything is hooked to the internet

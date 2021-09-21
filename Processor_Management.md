@@ -9,13 +9,13 @@
 ## Processor Scheduler
 * assigns the CPU to execute the processes of those jobs placed in the READY queue by the **Job Scheduler**
 
-    job =>HOLD--Job scheduler(for resources)-->READY--process scheduler(Algorithm--->RUN---->FINISH
+            job =>HOLD--Job scheduler(for resources)-->READY--process scheduler(Algorithm--->RUN---->FINISH
 
-job =>HOLD---->READY----->RUN---->FINISH
-                ^--------/
-                (priority)                    
-                ^-WAIT <-/
-    see class notes for better chart
+        job =>HOLD---->READY----->RUN---->FINISH
+                        ^--------/
+                        (priority)                    
+                        ^-WAIT <-/
+            see class notes for better chart
 * There are 2 classes of jobs:
     1. I/O Oriented
     2. CPU Oriented
@@ -23,16 +23,17 @@ job =>HOLD---->READY----->RUN---->FINISH
 * Each process in the system is represented by a data structure called **Process Control Block(PCB)**
 
 * PCBs are usually linked into queues
-    PCB:    | Process id       |
-            | process status   |---> HOLD, READY, RUNNING, WAITING
-            | process state    |
-            | * Register counts|--> How many registers needed when 
-            |                  |    job is interrupted and waiting  
-            | * Main Memory    |
-            | * Priority       |
-            | * Process status |--> when status is HOLD, READY, and WAITING
-            |        word      |         
-            | Accounting       |
+
+        PCB:    | Process id       |
+                | process status   |---> HOLD, READY, RUNNING, WAITING
+                | process state    |
+                | * Register counts|--> How many registers needed when 
+                |                  |    job is interrupted and waiting  
+                | * Main Memory    |
+                | * Priority       |
+                | * Process status |--> when status is HOLD, READY, and WAITING
+                |        word      |         
+                | Accounting       |
 
 ### What makes a good scheduling policy?
 * Maximize **throughput**: running as many jobs as possible in a fixed period time.*running short jobs or jobs with no interrupt*

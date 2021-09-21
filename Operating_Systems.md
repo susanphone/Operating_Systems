@@ -32,7 +32,10 @@
     Computer Architecture and hardware.
 
 ### What will happen if you run ```a.out```?
-Board(device manager) --> is it (```a.out```) in main memory (memory M)?
+Board(device manager) --> is it (```a.out```) 
+
+in main memory (memory M)?
+
     -->If not, fetch it (File M)
     --> run it (processor M) --> output in screen, device M
                              --> output in file, file M
@@ -47,7 +50,8 @@ Board(device manager) --> is it (```a.out```) in main memory (memory M)?
 ### Like a pyramid (look at class notes on D2L)
 
 memory-address.c file
-    ```./a.out``` returns memory addresses in memory-address file
+
+```./a.out``` returns memory addresses in memory-address file
         var and var1 are reverse order
             var 1 2fe3e9dc
             buff  2fe2b150
@@ -55,9 +59,8 @@ memory-address.c file
         this uses a **stack**
         
 bytes vs char, char is smaller 4 bytes is 64 char
-what does ```cc memory-address.c``` do? does this compile the program? I think so.
 
-first hw posted friday
+what does ```cc memory-address.c``` do? does this compile the program? I think so.
 
 
 

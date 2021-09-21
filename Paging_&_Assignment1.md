@@ -15,31 +15,34 @@
 * Drawback? *Overhead is increased significantly*. An OS nowadays has to be designed by experts and by substantial teamwork
 ### How do we manage paging?
 1. Job Table
-    job #       size        PMT location
-    1           26k             xxxxxxx
+    
+        job #       size        PMT location
+        1           26k             xxxxxxx
 2. Page Map Table (PMT for each job)
-    page #      page frame number in memory
-    0                   5
-    1                   3
-    2                   0  
+    
+        page #      page frame number in memory
+        0                   5
+        1                   3
+        2                   0  
 3. Memory Map Table
-    page frame #         status
-0       0                 busy
-1       1                 --
-2       2                 free
-3       3                 busy
-4       4                 --
-5       5                 busy
+
+            page frame #         status
+        0       0                 busy
+        1       1                 --
+        2       2                 free
+        3       3                 busy
+        4       4                 --
+        5       5                 busy
 
 ### What if we have a goto statment?
 * Offsett(displacement) of a line is the factor used to locate that line within the page frame
 * Intuitively, offset represents how far away a line is from the beginning of its page
 
-    pagesize / line # to be located = page #
-                    x x x x 
-                      x x x x <- displacement
-    ex: page size - 500 lines
-        need to access line 1671
+        pagesize / line # to be located = page #
+                        x x x x 
+                        x x x x <- displacement
+        ex: page size - 500 lines
+            need to access line 1671
 
         500 / (1671 - 1500 = 171) <-- offset(displacement)
         = 3 <-- page # 
