@@ -119,3 +119,117 @@
 # Starvation
 * Dining Philosophers problem (Dijsktra, 1968)
     * See slides
+    if one person picks up both forks, no one can eat. 
+    solution: kick a philosopher out, but not natural
+    main purpose is regarding process synchronization
+# Process Synchronization
+* 3 solutions 
+    1. TEST-AND-SET, use instruction to test if key is available
+        - -busy waiting
+    2. WAIT-AND-SIGNAL
+    3. semaphore, nonnegative int that can be used as a flag
+        - not just implementation, can do more, like train signals
+### Dijkstra's PV Operation
+    - P stands for Proberen (test)
+        p(s)
+    - V stand for Verhogen (increment)
+        v(s) means increment except when $s = 0$
+* traditional way to implement **mutex**
+* can implement anything signal can plus more
+
+## Process Cooperation
+* processes have to cooperate to finish something, like google docs
+### producer and consumer
+* lunch time hot dog carts with two employees. 
+* we can easy communicate, have to make fresh and hot
+* so producer creates something, consumer takes it. If buffer is full, producer stops.
+* implementing buffer half full using two semaphore: full and empty
+* another semaphore needed for mutual exclusion: mutex
+* Example
+    * produce data
+    1. increment empty position by 1, empty position change from 4 to 3
+    2. make another hotdog
+    3. increase full position by 1, add another hotdog to bin(buffer)
+    * consumer
+    * take away a hotdog
+    * may have to wait, can't do 0 to -1
+
+### readers and writers
+in early 1970s used airline reservation on computers
+* it is not random
+* you would have a lot of readers, checking the prices and timing
+* few people add prices and times
+solution 1: reader kept at high priority, writers could be blocked
+- -writer starvation
+solution 2: writer kept at high priority, reader put into hold
+- -read starvation
+solution 3: (1975) when writer finished all read on hold are allowed to read. when writer is on hold, readers finish and then repeat.
+* r1 readers waiting, r2 readers reading
+* w1 writers waiting, w2 writers writing
+
+### Friday's notes :)
+* More readers, few writers
+* r1 - readers request to read, willing to wait
+* r2 - readers are reading
+* w1 - writers request to write
+* w2 - writers are writing
+### Solution 1: give readers priority
+
+        Readers() {
+            P(mutex);
+                R1 = R1 + 1;
+                if (R1 == 1) P(writeBlock);
+            V(mutex);
+            read data;
+            P(mutex);
+                R1 = R1-1;
+                if (R1 == 0) V(writeBlock);
+            V(mutex);
+        }
+        Writer() {
+            P(writeBlock);
+            write data
+            V(writeBlock);
+        }
+
+Monitor: a procedure that does something specific
+
+    wait(c): suspend the calling process on condition c.
+    signal(c): resume the process blocked on the same condition c
+* Mutual exclusion is automatically implemented
+* All local variables are only accessed by monitor's procedures, and not by external procedure
+* Waiting processes are automatically put in a queue
+
+        start_read() // called by reader who wishes to read
+        end_read() //called by reader who wishes to finish read
+        start_write()
+        end_write()
+        procedure start-read;
+            begin if busy V or OKtowrite. Queue then OKtoread.wait; \\invariant: busy => readercount = 0
+                readercount := readercount + 1
+                OKtoread.signal;
+                comment: once one reader can start, they all can
+            end
+        procedure end-read;
+            begin readercount := readercount - 1;
+                if readercount == 0, then OKtowrite.signal;
+            end
+
+### Solution 2: Give priority to the writer
+* Writer function
+    * INcrease the number of writers by 1
+    * block the readers with P(readBlock)
+    * writer can block other writer
+    * if no writers, allow readers to read
+* Reader Function
+    * all readers reading are able to finish their job
+    * three levels of P V operations
+    * only the first reader can reset writer pending
+    * the first reader blocks the writers
+    * once writing starts, it has to finish before readers can read
+    * decrease readers when you finish
+* Algorithm
+CoBegin and COEnd, can run Reader() and Writer() at the same time
+* Tony Hoare's Solution (1974)
+    * Monitors: An Operating System Structuring Concept
+    

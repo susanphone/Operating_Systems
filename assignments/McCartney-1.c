@@ -85,7 +85,7 @@ void repl_execute_command(struct char_buff *command[]) {
     } else {
         //if job is done, remove from queue
         if(page_frame_pointer != 0) {
-            int reset_frames = remove_job_from_memory(page_frames);
+            int reset_frames = remove_job_from_memory(page_frames, &job_number);
             page_frame_pointer[reset_frames];
             dequeue(&command[0]);
         } else {

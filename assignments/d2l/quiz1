@@ -1,0 +1,279 @@
+Question 1 (1 point) 
+Saved
+A common strategy to give each process in the queue some time in turn is referred to as a ______ technique.
+
+Question 1 options:
+
+multithreading
+
+
+round-robin
+
+
+time-slicing
+
+
+serial processing
+
+Question 2 (1 point) 
+Saved
+______ is where the OS must prevent independent processes from interfering with each other's memory, both data and instructions.
+
+Question 2 options:
+
+Support of modular programming
+
+
+Process isolation
+
+
+Automatic allocation and management
+
+
+Protection and access control
+
+Question 3 (1 point) 
+Saved
+______ is concerned with the proper verification of the identity of users and the validity of messages or data.
+
+Question 3 options:
+
+Availability
+
+
+Confidentiality
+
+
+Authenticity
+
+
+Data integrity
+
+Question 4 (1 point) 
+Saved
+______ is a facility that allows programs to address memory from a logical point of view, without regard to the amount of main memory physically available.
+
+Question 4 options:
+
+Round-robin
+
+
+Cache
+
+
+Process isolation
+
+
+Virtual memory
+
+Question 5 (1 point) 
+Virtualization technology enables a single PC or server to simultaneously run multiple operating systems or multiple sessions of a single OS.
+
+Question 5 options:
+	True
+	False
+Question 6 (1 point) 
+Saved
+A user program executes in a ______ , in which certain areas of memory are protected from the user's use, and in which certain instructions may not be executed.
+
+Question 6 options:
+
+kernel mode
+
+
+user mode
+
+
+task mode
+
+
+batch mode
+
+Question 7 (1 point) 
+Saved
+The principle objective of Batch Multiprogramming is to minimize response time.
+
+Question 7 options:
+	True
+	False
+Question 8 (1 point) 
+Saved
+The ______ is the internal data by which the OS is able to supervise and control the process.
+
+Question 8 options:
+
+executable program
+
+
+associated data
+
+
+nucleus
+
+
+execution context
+
+Question 9 (1 point) 
+Saved
+One of the first time-sharing operating systems to be developed was the ______.
+
+Question 9 options:
+
+Compatible Time-Sharing System
+
+
+Real Time Transaction System
+
+
+Multiple-Access System
+
+
+Multiprogramming Operating Systems
+
+Question 10 (1 point) 
+Saved
+Operating systems must evolve over time because: _____ .
+
+Question 10 options:
+
+new hardware is designed and implemented in the computer system
+
+
+hardware must be replaced when it fails
+
+
+hardware is hierarchical
+
+
+users will only purchase software that has a current copyright date
+
+Question 11 (1 point) 
+Saved
+Hardware features desirable in a batch-processing operating system include memory protection, timer, privileged instructions, and ______.
+
+Question 11 options:
+
+clock cycles
+
+
+associated data
+
+
+interrupts
+
+
+kernels
+
+Question 12 (1 point) 
+Saved
+The key to the success of Linux has been its character as a free software package avialable under the auspice of the ______ .
+
+Question 12 options:
+
+World Wide Web Consortium
+
+
+Free Software Foundation
+
+
+Berkeley Software Distribution
+
+
+GNU Public License
+
+Question 13 (1 point) 
+Saved
+A monolithic kernel is implemented as a single process with all elements sharing the same address space.
+
+Question 13 options:
+	True
+	False
+Question 14 (1 point) 
+Saved
+The processor itself is not a resource so the OS is not involved in determining how much of the processor time is devoted to the execution of a user program.
+
+Question 14 options:
+	True
+	False
+Question 15 (1 point) 
+Saved
+The operating system's _____ refers to its inherent flexibility in permitting functional modifications to the system without interfering with service.
+
+Question 15 options:
+
+efficiency
+
+
+ability to evolve
+
+
+controlled access
+
+
+convenience
+
+Question 16 (1 point) 
+Saved
+The technique where a system clock generates interrupts, and at each clock interrupt the OS regains control and assigns the processor to another user, is ______.
+
+Question 16 options:
+
+time slicing
+
+
+multithreading
+
+
+round robin
+
+
+clock cycle
+
+Question 17 (1 point) 
+Saved
+In a time-sharing system, a user's program is preempted at regular intervals, but due to relatively slow human reaction time this occurrence is usually transparent to the user.
+
+Question 17 options:
+	True
+	False
+Question 18 (1 point) 
+Saved
+A special type of programming language used to provide instructions to the monitor is ______.
+
+Question 18 options:
+
+FPL
+
+
+JCL
+
+
+DML
+
+
+SML
+
+Question 19 (1 point) 
+Saved
+Multiprogramming operating systems are fairly sophisticated compared to single-program or ______ systems.
+
+Question 19 options:
+
+uniprogramming
+
+
+time-sharing
+
+
+multitasking
+
+
+memory management
+
+Question 20 (1 point) 
+Saving...
+The user has direct access to the processor with a batch-processing type of OS.
+
+Question 20 options:
+	True
+	False

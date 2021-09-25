@@ -1,0 +1,38 @@
+/bin/python3 /home/susan/school/Operating_Systems/assignments/assignment1/mccartney-1.py
+>1 35000
+>2 4096
+>3 4096
+>4 4096 
+>5 4096
+>6 4096
+>7 4096
+>8 4096
+>2 0
+>4 0
+>6 0
+>8 0
+>9 12000
+>10 24000
+>print
+Page: 1-5 Job: 10 Size: 17752
+
+Page: 5-9 UNALLOCATED Size: 17248
+
+Page: 9-10 Job: 9 Size: 4096
+
+Page: 10-11 Job: 3 Size: 4096
+
+Page: 11-12 Job: 9 Size: 4096
+
+Page: 12-13 Job: 5 Size: 4096
+
+Page: 13-14 Job: 9 Size: 3808
+
+Page: 14-14 Job: 10 Size: 288
+
+Page: 14-15 Job: 7 Size: 4096
+
+Page: 15-16 Job: 10 Size: 5960
+
+>exit
+Goodbye
