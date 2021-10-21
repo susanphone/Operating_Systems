@@ -1,7 +1,7 @@
 # PThread Programming Assignment
 can download packages that only do 30% of the assignment is okay
 
-* Implement a variation of Producer/Coonsumer Problem
+* Implement a variation of Producer/Consumer Problem
 * Buffer is doubly linked list
     * each node had a random integer value less than 50
     * initial linked list should contain 3 nodes
