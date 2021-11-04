@@ -1,4 +1,4 @@
-# ISA Algorithm
+# RSA Algorithm
  RSA Public-Key Cryptosystem
  * Rivest-Shamir-Adleman, 1977
  1. Select at random two large prime numbers p,q.
@@ -71,3 +71,24 @@
     a = 4       319 mod 7 = 4
                 319 mod 9 = 4
     319 mod 315 = 4
+
+        X \= Y mod P means X mod P = Y
+        10 \= 1 mod 3
+        10 mod 3 = 1
+
+## Proof that RSA Works
+* $P(M)= M^e \mod n$
+* $S(C)= C^d \mod n$
+
+* **Theorem: $P(S(M)) = S(P(M)) = M^{ed} \mod n$**
+* Proof:
+    * Since $e,d$ are multiplicative inverse modulo $(p-1)(q-1)$, we have $e \times d = 1 + k(p-1)(q-1)$, for some $k$.
+    * If $M \equiv 0 \mod P$, certainly the claim holds
+    * If $M \not \equiv 0 \mod P$, we have $M^{ed} \equiv M x (M^p-1)^{k(q-1)} \mod P$
+        * $\equiv M \times [(M \mod P)^{p-1}]^{k(q-1)} \mod P$
+        * $ \equiv M[1]^{k(q-1)} \mod P$ //**By Fermat's Theorem**
+        * $\equiv M \mod P$
+    * => $M^{ed} \equiv M \mod P$ for all $M$
+    * Symmetrically, $M^{ed} \equiv M \mod q$ for all $M$
+    * By the **Chinese Remainder Theorem**, $M^{ed} \equiv M \mod (p \times q)$
+    * $\Rightarrow \equiv M \mod n$
