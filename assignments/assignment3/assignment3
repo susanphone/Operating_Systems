@@ -1,0 +1,36 @@
+P(T1) = 3
+P(T2) = 2
+P(T1) = 1
+t1 cannot preempt t3
+
+T1 time 0: <0,0,0>
+T1 holds buffer <1,1,1> -> T_1 111 T_1
+T3 holds buffer <3,3,3> -> T_3 333 T_3
+1 ms per slice-> 3 ms to run
+enforcement of mutex has no time
+
+T2 runs without interruption -> T_2 NNNNNNNNNN T_2
+N means Normal
+T2 takes 10ms to run
+T1 preempts T2 and prints N that correspond to time
+
+<Arrival time, j> where j is the index of T_j
+
+1. Print out scenario of priority inversion: the T2 holds while T1 waits?
+Highest Priority
+    T1 = 3 ms
+    T2 = 10 ms
+    T3 = 3 ms
+Lowest Priority
+T1 can interupt T2, but not T3
+T2 can interupt T3
+
+
+2.  Time    < Arrival Time, j >     Time run
+    1           < 1, 3 >            T3tttT3
+    4           < 3, 2 >            T2NNNNNNNNNNT2
+    14          < 6, 3 >            T3tttT3
+    18          < 8, 1 >            T1tttT1
+    22          <10, 2 >            T2NNNNNNNNNNT2
+    25          <12, 3 >            T3tttT3
+    29          <26, 1 >            T1tttT1

@@ -71,10 +71,43 @@
 
     U1 + U2 + U3 = 0.753 <= 2 * (2 ^ 1/3 -1) = 0.779 
 
-
+    c = copy
     |---C1---|-----C2-----|-----C3------|---cC1---|----C3----|---cC2---|--C3---|--->
     0        20           60           100       120        150       190     200
 
     -->|---c2C1---|---C3--|------IDL------|---cC1---|---cC2---|
       200        220     240             300       320       350
                                                              ?^-Second copy of P3
+
+## Pop quiz on deadlines:
+* Deadlines: for periodic jobs, implicitly that the arrival time of the next one in the sequence
+* Example:
+    * A1 = 6
+    * B1 = 8
+    * C1 = 12
+* RMS: Greedy, priority in descending order A, B, C
+    * time 6, A2 arrives which has a higher priority than C1 (and preempts C1)
+* EDF: deadlines A2 = 12, B2 = 16
+    * time 6, A2 arrives, which has the same deadline compared with C1.
+* LLF: time 6, A2 arrives
+    * laxity for C1: 12 - 6 - 1 (remaining runtime for C1) = 5
+    * laxity for A2: 12 - 6 - 2 (running time for A2) = 4
+    * So A2 preempt C1
+
+## Unit and Windows Real-time Scheduling
+* Unix SVR4 (System V Release 4)
+    * realtime has highest priority
+    * dispq = dispatch queue
+    * dqactmap = a bit map vector, contains one bit for each priority level - 1 means the corresponding queue is not empty
+* FreeBSD (Berkeley System Distribution)
+    * sleep > run = run/sleep -> <1
+    * run > sleep = 1 + sleep/run -> > 1: these threads have higher level
+* Windows allows 2 priority classes
+    * priority never changes for realtime jobs
+    * priority changes for variable jobs
+    * initial priority is decided by process base priority and thread base priority
+        * Example: 
+            * Process: $(X \in [1, 15])$
+            * thread: $[X-2, X+2]$
+        * when it is running priority will be in range $[2,15]$
+         
